@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+Edit Sales
+{% endblock %}
+{% block content %}
+        <h1>Edit Sales Record</h1>
+        {% for row in rows %}
+        <form action="{{ url_for('editrec') }}" method="POST">
+            <h3 style="color:blue">Product ID: {{ row['rowid']}}</h3>
+            <input type="hidden" name="rowid" value="{{ row['rowid'] }}">
+           Product<br>
+            <input type="text" name="product_nm" value="{{ row['product_nm'] }}"/><br>
+
+            Category<br>
+            <input type="text" name="category" value="{{row['category']}}"/><br>
+
+            Quantity<br>
+            <input type="text" name="quantity" value="{{ row['quantity'] }}"/><br>
+
+            Price<br>
+            <input type="text" name="price" value="{{ row['price'] }}"/><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>
+        {% endfor %}
+{% endblock %}
